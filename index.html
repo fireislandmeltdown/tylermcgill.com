@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+
+    <meta charset="utf-8" />
+    
+    <title>Tyler McGill</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="description" content="Entrepreneur, gleek and electrical engineer.  Lip sync enthusiast and musical theatre writer.  Machine music inventor.  Occasionally I make money and country music." />
+    
+    <meta content="Tyler McGill" name="author" />
+    
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Raleway:400,600,900" rel="stylesheet">
+    
+    <style>
+    
+      /* context */
+      
+      html, body {
+        margin: 0;
+        min-height: 100vh;
+        width: 100vw; }
+      
+      /* viruses */
+      
+      .brandnamerecognition {
+        font-family: 'Raleway', sans-serif;
+        font-size: 32px;
+        font-weight: 600; }
+
+      .brandnametagline {
+        font-family: 'Caveat', cursive;
+        font-size: 32px;
+        font-weight: 400; }
+
+      .crayola {
+        display:block;
+        width: 640px; }
+      
+      .easya {
+        font-family: 'Raleway';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%; }
+        
+      .off {
+        display: none; }
+        
+      .signalfire {
+        position: absolute;
+        background-color: transparent;
+        background-image: url(./assets/images/antenna.png);
+        background-position: left bottom; 
+        background-repeat: no-repeat;
+        color: black;
+        font-family: 'Caveat', cursive;
+        font-size: 22px;
+        font-weight: 400;
+        height: 50px;
+        left: 30px;
+        padding-left: 60px;
+        text-align: left;
+        top:-40px;
+        width: 100px; }
+      
+      .weapon {
+        background-color: black;
+        color: white;
+        display: inline-block;
+        font-family: 'Raleway', sans-serif;
+        font-size: 32px;
+        font-weight: 900;
+        padding: 5px 15px;
+        position: relative;
+        margin-right: 5px;
+        margin-bottom: 8px;
+        text-decoration: none; }
+      
+      a.weapon:hover, .weapon.lock {
+        background-color: white;
+        color: black; }
+      
+      /* container */
+        
+      .chooseaweapon {
+        position: absolute;
+        text-align: center;
+        top: 80vh;
+        width: 100vw; }
+      
+      .fortyfourclub {
+        background-color: black;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        font-size: 32px;
+        font-weight: 900;
+        padding: 50px; }
+        
+      .learnnode {
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        margin: 0;
+        margin-bottom: 50px;
+        width: 100vw; }
+      
+      .learnnode h1 {
+        text-align: center;
+        width: 100%; }
+        
+      .target {
+        display: none; }
+      
+      .target .dayserum {
+        border-top: solid black 1px;
+        border-bottom: solid black 1px;
+        min-height: 300px; }
+        
+      .target .dayserum .rhapsody {
+        margin: 0 auto 0 auto;
+        max-width: 1000px;
+        min-width: 350px; }
+        
+      .target .dayserum .rhapsody .hook {
+        align-items: center;
+        display:flex;
+        height: 300px;
+        float:left;
+        margin-left:25px;
+        margin-right:25px;
+        width: 300px; }
+      
+      .target a.weapon {
+        display: block; }
+      
+      .target h1.weapon {
+        display: block;
+        font-size: 30px;
+        margin: 0 auto;
+        max-width: 950px; }
+        
+      .target .nightserum {
+        padding: 8px 0;
+        max-width: 1000px;
+        min-width: 350px;
+        margin: 0 auto 105px auto; }
+        
+      .target .nightserum .threecolumns .easya {
+        margin-top: 12px; }
+      
+      .target .hidinginplainsight {
+        margin: 0 0 0 25px;
+        width: 300px; }
+      
+      .target .hidinginplainsight a.less,
+      .target .hidinginplainsight div.weapon {
+        display: none; }
+        
+      .target .hidinginplainsight .easya {
+        display: none; }
+        
+      .target .nothingelsetoknow {
+        margin: 0 0 0 25px;
+        width: 300px; }
+      
+      .target .nothingelsetoknow a.less,
+      .target .nothingelsetoknow a.more {
+        display: none; }
+      
+      .target .threecolumns {
+        -webkit-column-count: auto;
+        -moz-column-count: auto;
+        column-count: auto;
+        
+        -webkit-column-gap: 25px;
+        -moz-column-gap: 25px;
+        column-gap: 25px;
+        
+        -webkit-column-width: 300px;
+        -moz-column-width: 300px;
+        column-width: 300px;
+        
+        min-height: 200px;
+        margin: 0 20px 0 25px; }
+        
+      .target .threecolumns a.more,
+      .target .threecolumns div.weapon {
+        display: none; }
+      
+      
+      /* switches */      
+      
+      body.firing .chooseaweapon {
+        position: static;
+        margin-bottom: 20vh;
+        margin-top: 20vh; }
+        
+      body.firing .learnnode {
+        display: none; }
+        
+      body.firing .target.lock {
+        display: block; }
+      
+      @media screen and ( max-height: 300px ) {
+        
+        body.firing .chooseaweapon {
+          position: static;
+          margin-bottom: 60px;
+          margin-top: 60px; }
+          
+      }
+      
+      @media screen and ( max-width: 725px ) {
+        
+        .signalfire {
+          display: none; }
+          
+      }
+      
+      @media screen and ( max-width: 999px ) {
+        
+        .crayola {
+          display: none; }
+          
+      }
+      
+      @media screen and ( max-width: 1050px ) {
+        
+        .fortyfourclub .brandnametagline {
+          display: none; }
+          
+      }
+      
+    </style>
+    
+  </head>
+    
+  <body>
+
+    <div class="learnnode">
+    
+      <h1>
+        
+        <span class="brandnamerecognition">MCGILL tyler lee, B.ENG.</span>
+        
+        <br>
+        
+        <span class="brandnametagline">asset creation + management</span>
+        
+      </h1>
+    
+    </div>
+    
+    <div class="chooseaweapon">
+      
+      <a class="weapon" href="#art">ART</a>
+      
+      <a class="weapon" href="#brands">BRANDS</a>
+      
+      <a class="weapon" href="#people">PEOPLE</a>
+      
+      <a class="weapon" href="#re">RE<div class="signalfire">real estate</div></a>
+      
+      <a class="weapon" href="#software">SOFTWARE</a>
+      
+    </div>
+    
+    <div id="art" class="target">
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">ALACARTE</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">An experimental album of sound collage and pattern analysis.  This is not pop music.  Best suited to insect revolution and animal husbandry.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-alacarte.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="nothingelsetoknow">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <a class="weapon" href="https://music.amazon.com/albums/B00W88L772">AMAZON MUSIC.</a>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">HW ORIENTATION</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A musical 10,000 years in the making that reveals the hidden truth that sits beside you.  It would be rated PG-13 if cockroaches rated things.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-hworientation.jpg">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <a class="weapon" href="https://www.dropbox.com/s/ugf3us5579mztix/hworientation-instrumental-sampler.zip?dl=1">SAMPLE AUDIO.</a>
+            
+            <div class="easya">THE WRITER’S MIND. There is some ancient wisdom that claims adults are undesirable unless they act like inquisitive bumbling lovable small children.  I think they are some of the wisest words ever written.  I also find it harder to find these people as each year passes.  I wrote Harms Way ( HW ) Orientation in the spirit of the childhood genius Gordan Korman to inspire more to embrace the same wisdom I choose to live by and celebrate.</div>
+            
+            <div class="easya">As I quietly explored the theatre and entertainment industry I found a world at odds with my mindset.  They often make fun of the characters they portray instead of trying to live inside of them.  They embrace an intellectual analysis of a script they are unqualified to write and attribute motives and reasonings of their own creation instead of appreciating the beauty of unexplained art as it stands.  I decided to explore other avenues to keep the artistic creativity of my creation intact.</div>
+            
+            <div class="easya">THE GIST ( WITHOUT SPOILERS ). Aliens are smart.  What if they decided to enjoy life on Earth instead of destroying it?  What if they like the human body more than their own form?  What if they wanted to drink beer and dance instead of raging through the universe like maniacs?  What if their biggest problem was social structure and human culture?</div>
+            
+            <div class="easya">HW Orientation is the story of an alien race dealing with survival but seduced by the wealth and life of Earth. They struggle with the thought conflict of trading their own identity to enjoy and assimilate a foreign way of life.  The civil discord that this prompts and the path it creates drives the story and becomes the seed that germinates into the Harms Way Universe.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">PAGODA SILK</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A novel exploring life after it and the mysteries of the universe that hosts it are solved to the point of boring.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-pagodasilk.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="nothingelsetoknow">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+    </div>
+    
+    <div id="brands" class="target">
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">AVENMORE</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A quiet tech company that replaces your blue screen of death.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-avenmore.jpg">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">THE BRAND DEAL.  Differentiation from a crowded marketplace of crap and athletic paramedics is difficult in the technology industry.  Avenmore is a creation that is attempting to achieve a more calm and professional reality that speaks to competence not reaction speed.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">NOTKKK</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">By Kylie, Kendall and Kim.  Cosmetics made for the stage and modern life in the spotlight.  Embracing complexions of every color and people of every gender.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-notkkk.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">THE BRAND DEAL.  The world needs a more inclusive line of cosmetics that suit the more challenging situations and faces.  The Kardashians have demonstrated a fondness for the industry, advertising and an inclusive approach to life.  This brand is the definitive statement of that synergy and an opportunity to rebrand the hardwork of some women in business that deserve a considerate offer of assistance.  If they so desire to pursue this premade package it will develop as they so desire.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+    </div>
+    
+    <div id="people" class="target">
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">EMMA JOHNSON</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A draftee for computer programming who has no idea she should check her email.  Emma, please check your SCHOOL email and email me back!</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/people-emmajohnson.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="nothingelsetoknow">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">TYLER MCGILL</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">Entrepreneur, gleek and electrical engineer.  Lip sync enthusiast and musical theatre writer.  Machine music inventor.  Occasionally I make money and country music.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/people-tylermcgill.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="nothingelsetoknow">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon" href="#">NOTHING ELSE TO KNOW.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+    </div>
+    
+    <div id="re" class="target">
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">GERALDGILLUM.COM</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">G-Eazy's home on the web he hasn't found yet.  When he does its here for him with only a few catches. :)</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-geraldgillum.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">VALUE OVERVIEW. Sometimes the best way to demonstrate competence isn't a resume or a portfolio, its ownership of something a stranger needs and the demonstration of your personality, ethics and professionalism by your method of handling said vital asset.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">KATHERYNHUDSON.COM</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">On the off chance a world-reknown singer wants to meet a hare-brained entrepreneur for a discusion about business logic, frontend interfaces and a musical production called Harm's Way, here's a domain name to kick things off.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-katherynhudson.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">VALUE OVERVIEW. Sometimes the best way to demonstrate competence isn't a resume or a portfolio, its ownership of something a stranger needs and the demonstration of your personality, ethics and professionalism by your method of handling said vital asset.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">MARSHALLBRUCEMATHERS.COM</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">When Eminem loses his fear of the name Bruce, his back is covered.  Perhaps the real Slim Shady will need a rebrand to be himself.  If so, you've found the right guy to help.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-marshallbrucemathers.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">VALUE OVERVIEW. Sometimes the best way to demonstrate competence isn't a resume or a portfolio, its ownership of something a stranger needs and the demonstration of your personality, ethics and professionalism by your method of handling said vital asset.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">REGRANDE.COM</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">In case the real allergy for Ariana Grande is the difficulty in getting people to call her Ari, I've got her back.  This will solve all problems except tomato allergies.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-regrande.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">VALUE OVERVIEW. Sometimes the best way to demonstrate competence isn't a resume or a portfolio, its ownership of something a stranger needs and the demonstration of your personality, ethics and professionalism by your method of handling said vital asset.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+    
+    </div>
+    
+    <div id="software" class="target">
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">AUTHENTICATION LOGIC</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A reliable authentication and session management system that is privacy friendly and biometric free.  Single signon at work, home and public spaces for privacy aware humans..</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-authenticationlogic.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">THE PREMISE. A biometric free system of authentication that keeps your personal data yours and off third party servers while being idiot proof, memory friendly and completely secure. Current systems of password management and their alternative forms including two-factor authentication turn an Amazon checkout into a trip to Fort Knox.  It is frustrating, intrusive and often counter-productive as it forces users to rely on systems like pen and paper to remember their security details.</div>
+
+            <div class="easya">THE REALITY. A well developed solution and algorithm is in trial runs at confidential participant locations. Current results are extremely promising and prompt ongoing discussions about deploying a standalone system or only offering it as part of an integrated custom software solution.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">FRICKEFRICKE</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A search engine that hates SEO and loves hardworking normal people who put their valuable information online.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-frickefricke.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">THE PREMISE. To much crud commands the front page of the major two information sources in the world.  In my experience the creatives and researchers who write great content and have great ideas rarely care to optimize it for a search engine.  FRICKEFRICKE is how you find them.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">GRIPE</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">A tool for location-aware crowdsourced deal finding.  The secret is advertising to people ready to buy.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-gripe.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="hidinginplainsight">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+            
+            <div class="easya">THE PREMISE. Imagine a world where you are about to buy at Best Buy but you aren't sure if their sale price is really a con.  Pull out your phone, scan the barcode and see the real price in-store around you within a 15 mile radius.  Call them up with a click to confirm availability and ditch the overpriced lie with enthusiasm.</div>
+
+            <div class="easya">THE REALITY. Camera phones and consumer behavior have not yet reached the critical path that would embrace this method of shopping.  When it does, we will be the company you spend your day with.  Until then you should check out Flipp ( <a href="http://flipp.com/">http://flipp.com</a> ).</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+      <div class="drunkelephant">
+      
+        <h1 class="weapon">HEEDWIND</h1>
+
+        <div class="dayserum">
+
+          <div class="rhapsody">
+
+            <div class="hook">
+
+              <span class="easya">Alerts and notifications for people who want to listen to their surroundings and ignore the noise.</span>
+
+            </div>
+
+            <img class="crayola" src="./assets/images/crane-heedwind.png">
+
+          </div>
+
+        </div>
+
+        <div class="nightserum">
+
+          <div class="nothingelsetoknow">
+            
+            <a class="weapon less" href="#">READ LESS.</a>
+            
+            <a class="weapon more" href="#">READ MORE.</a>
+            
+            <div class="weapon">NOTHING ELSE TO KNOW.</div>
+
+          </div>
+
+        </div>
+      
+      </div>
+      
+    </div>
+    
+    <div class="fortyfourclub">
+    
+      <a class="weapon" href="mailto:tmcgill@avenmore.com">DO EMAIL ME.</a><span class="brandnametagline">( especially if your name is emma johnson or katheryn hudson )</span><br>
+      
+      <a class="weapon" href="https://shop.tylermcgill.com/">DO SHOP MY STORE.</a><span class="brandnametagline">( its only stuff i use or gift people i care about )</span><br>
+      
+      <a class="weapon" href="https://goo.gl/maps/So6fXQGADwH2">DOn't ASK WHERE I AM.</a><span class="brandnametagline">( it's a secret )</span><br>
+      
+      <a class="weapon" href="https://en.wikipedia.org/wiki/Copyright">DOn't INFRINGE MY IP.</a><span class="brandnametagline">( or i will delete your fortnite account )</span><br>
+      
+      <a class="weapon" href="https://en.wikipedia.org/wiki/Allergy">I'M ALLERGIC.</a><span class="brandnametagline">( to meat, jake paul, tanner fox and yeezus )</span><br>
+      
+      <a class="weapon" href="https://www.merriam-webster.com/dictionary/available">I'M AVAILABLE.</a><span class="brandnametagline">( for clients, contracts and investments )</span><br>
+      
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script>
+      
+      $ ( document ).ready ( function ( ) {
+      
+        $ ( ".chooseaweapon a.weapon" ).on ( "click", function ( e ) {
+
+          $( this ).toggleClass ( "lock" );
+
+          $( this ).siblings ( ).removeClass ( "lock" );
+
+          $( ".target" ).removeClass ( "lock" );
+
+          if ( $( this ).hasClass ( "lock" ) === true ) {
+
+            $( "body" ).addClass ( "firing" );
+
+            $( "#" + $( this ).attr ( "href" ).slice ( 1 ) + ".target" ).addClass ( "lock" );
+
+          }
+
+          else if ( true ) {
+
+            $( "body" ).removeClass ( "firing" );
+
+          }
+          
+          $( window ).scrollTop ( 0 );
+          
+          return false;
+
+        });
+        
+        $ ( ".nightserum a.weapon.less" ).on ( "click", function ( e ) {
+          
+          $ ( this ).parent ( ).removeClass ( "threecolumns" );
+          
+          $ ( this ).parent ( ).addClass ( "hidinginplainsight" );
+          
+          return false;
+          
+        });
+        
+        $ ( ".nightserum a.weapon.more" ).on ( "click", function ( e ) {
+          
+          $ ( this ).parent ( ).removeClass ( "hidinginplainsight" );
+          
+          $ ( this ).parent ( ).addClass ( "threecolumns" );
+          
+          return false;
+          
+        });
+        
+      });
+      
+      console.log ( "> Hey.  If you're sneaking around under my hood I have a suspicion you're up to no good.  Go away :)" );
+      
+      setTimeout ( () => { console.log ( "> Yes that means you ..." ); }, 100000 );
+      
+      setTimeout ( () => { console.log ( "> Alright, I've called the cops ... prepare for imminent abduction." ); }, 1000000 );
+      
+    </script>
+  
+  </body>
+
+</html>
